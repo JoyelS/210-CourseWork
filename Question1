@@ -1,0 +1,70 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+//----------------------------------
+void comb(string s1, string s2);
+//------------------------------------
+int main()
+{
+
+
+	string s1;
+	string s2;
+	cin >> s1;
+	cin >> s2;
+	comb(s1, s2);
+	return 0;
+}
+
+
+//-----function for combining---
+void comb(string s1, string s2)
+{
+
+	char c1[100];
+	char c2[100];
+	string s;
+	for (int i = 0; i < s1.length(); i++)
+	{
+		c1[i] = s1[i];
+	}
+	for (int i = 0; i < s2.length(); i++)
+	{
+		c2[i] = s2[i];
+	}
+
+
+	int cl1 = 0;
+	int cl2 = 0;
+	bool first = true;
+	for (int i = 0; i < s1.length() + s2.length(); i++)
+	{
+
+		if (cl1 < s1.length() && first == true)
+		{
+			s = s + c1[cl1];
+			cl1++;
+			first = false;
+		}
+		else if (cl1 == s1.length())
+		{
+			s = s + c2[cl2];
+			cl2++;
+		}
+		else if (cl2 < s2.length() && first == false)
+		{
+			s = s + c2[cl2];
+			cl2++;
+			first = true;
+		}
+		else if (cl2 == s2.length())
+		{
+			s = s + c1[cl1];
+			cl1++;
+		}
+	}
+
+	cout << s << endl;
+
+}
